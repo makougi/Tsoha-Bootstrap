@@ -1,10 +1,13 @@
-# Tietokantasovelluksen esittelysivu
+﻿# Tietokantasovelluksen esittelysivu
 
-Yleisiä linkkejä:
+##Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Linkki sovellukseeni](http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/)
+* [Linkki dokumentaatiooni](https://github.com/makougi/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
-
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Tietokantasovellus: Kaljaa-tietokanta, eli baarin ”piikki”-järjestelmä. Kaljaa-tietokantajärjestelmän on tarkoitus toimia baarin ”piikki”-järjestelmänä. Asiakas tallentaa
+järjestelmään rahaa ja käyttää sitä juomien ostamiseen. Myös velaksi voi ostaa.
+Järjestelmän tavoitteena on pitää kirjaa asiakkaiden saldosta, järjestelmän oman kassan saldosta
+sekä juomavaraston juomien saldosta. Lisäksi tarkoituksena on, että järjestelmässä ylläpidetään
+lokia, josta näkee kaikki tapahtumat.
