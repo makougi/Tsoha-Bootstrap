@@ -1,16 +1,33 @@
-CREATE TABLE Player(
-  id SERIAL PRIMARY KEY, -- SERIAL tyyppinen pääavain pitää huolen, että tauluun lisätyllä rivillä on aina uniikki pääavain. Kätevää!
-  name varchar(50) NOT NULL, -- Muista erottaa sarakkeiden määrittelyt pilkulla!
-  password varchar(50) NOT NULL
+
+CREATE TABLE Asiakkaat(
+  tunnus SERIAL PRIMARY KEY,
+  nimi varchar(50) NOT NULL,
+  puhelinnumero varchar(20) NOT NULL
 );
 
-CREATE TABLE Game(
-  id SERIAL PRIMARY KEY,
-  player_id INTEGER REFERENCES Player(id), -- Viiteavain Player-tauluun
-  name varchar(50) NOT NULL,
-  played boolean DEFAULT FALSE,
-  description varchar(400),
-  published DATE,
-  publisher varchar(50),
-  added DATE
+CREATE TABLE Juomat(
+  juoma varchar(200) PRIMARY KEY,
+  alkoholiprosentti INTEGER,
+  kuvaus varchar(200)
+);
+
+CREATE TABLE Varasto(
+  juoma varchar(200) PRIMARY KEY,
+  maara INTEGER,
+  hinta INTEGER
+);
+CREATE TABLE Kirjanpito(
+  asiakastunnus SERIAL PRIMARY KEY,
+  nimi varchar(50) NOT NULL,
+  saldo INTEGER NOT NULL,
+  status INTEGER NOT NULL
+);
+CREATE TABLE Loki(
+  tapahtuma varchar(20),
+  aika DATE,
+  ID INTEGER,
+  saldo INTEGER,
+  juoma varchar(200),
+  maara INTEGER,
+  muut varchar(20)
 );

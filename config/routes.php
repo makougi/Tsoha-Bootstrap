@@ -1,19 +1,31 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
+    KaljaaController::index();
+});
+$routes->get('/asiakas', function(){
+    KaljaaController::asiakas();
+});
+$routes->get('/yllapitaja', function(){
+    KaljaaController::yllapitaja();
+});
+$routes->get('/asiakkaat', function(){
+    KaljaaController::asiakkaat();
+});
+$routes->get('/varasto', function(){
+    KaljaaController::varasto();
+});
+$routes->get('/juoma', function(){
+    KaljaaController::juoma();
+});
+$routes->get('/kirjanpito', function(){
+    KaljaaController::kirjanpito();
+});
+$routes->get('/loki', function(){
+    KaljaaController::loki();
+});
+$routes->get('/kirjautuminen', function(){
+    KaljaaController::kirjautuminen();
 });
 
-$routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-});
-$routes->get('/game', function() {
-    HelloWorldController::game_list();
-});
-$routes->get('/game/1', function() {
-    HelloWorldController::game_show();
-});
 
-$routes->get('/login', function() {
-    HelloWorldController::login();
-});

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Toiminnot</h1>
+<button class="btn btn-primary">Asiakkaan lisäys</button>
+<button class="btn btn-success">Juoman myynti</button>
+<button class="btn btn-danger">Juoman sisäänosto</button>
+<button class="btn btn-primary">Asiakkaan statusmuutos</button>
+
+<h1></h1>
+<a class="btn btn-default" href="{{base_path}}/kirjanpito">Kirjanpito</a>
+<a class="btn btn-default" href="{{base_path}}/asiakkaat">Asiakkaat</a>
+<a class="btn btn-default" href="{{base_path}}/varasto">Varasto</a>
+<a class="btn btn-default" href="{{base_path}}/juoma">Juomat</a>
+<a class="btn btn-default" href="{{base_path}}/loki">Loki</a>
+
+
+
+<h1>Kassan saldo</h1>
+<input type="text" class="form-control" placeholder="10000 euroa">
+
+<h1>Varasto</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Juoma</th>
+            <th>Määrä</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Siideri</td>
+            <td>4 kpl</td>
+        </tr>
+        <tr>
+            <td>Lonkero</td>
+            <td>3 kpl</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

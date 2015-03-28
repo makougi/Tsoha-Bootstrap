@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Asiakkaat</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tunnus</th>
+            <th>Nimi</th>
+            <th>Puhelinnumero</th>
+            <th>Saldo</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0000</td>
+            <td>KASSA</td>
+            <td>0000000000</td>
+            <td>100</td>
+            <td>OK</td>
+        </tr>
+        <tr>
+            <td>0001</td>
+            <td>Timo</td>
+            <td>0501111111</td>
+            <td>400</td>
+            <td>OK</td>
+        </tr>
+        <tr>
+            <td>0002</td>
+            <td>Simo</td>
+            <td>0501111112</td>
+            <td>800</td>
+            <td>OK</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
