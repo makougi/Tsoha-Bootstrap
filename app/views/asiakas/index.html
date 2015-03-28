@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Kaikki asiakkaat</h1>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Tunnus</th>
+        <th>Nimi</th>
+        <th>Puhelinnumero</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for asiakas in asiakkaat %}
+        <tr>
+          <td>{{asiakas.tunnus}}</td>
+          <td>{{asiakas.nimi}}</td>
+          <td>{{asiakas.puhelinnumero}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

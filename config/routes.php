@@ -1,5 +1,7 @@
 <?php
-
+$routes->get('/kaikkiAsiakkaat', function() {
+    AsiakasController::kaikkiAsiakkaat();
+});
 $routes->get('/', function() {
     KaljaaController::index();
 });
