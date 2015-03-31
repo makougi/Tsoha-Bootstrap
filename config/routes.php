@@ -1,7 +1,28 @@
 <?php
+$routes->post('/lisays', function(){
+    AsiakasController::uusiAsiakas();
+});
+
+$routes->get('/lisays/asiakasLisatty',function(){
+    AsiakasController::asiakasLisatty();
+});
+
+$routes->get('/lisaaAsiakas', function(){
+    AsiakasController::lisaaAsiakas();
+});
+
+$routes->get('/yksiAsiakas', function(){
+    AsiakasController::yksiAsiakas();
+});
+
 $routes->get('/kaikkiAsiakkaat', function() {
     AsiakasController::kaikkiAsiakkaat();
 });
+
+$routes->get('/asiakas/:id', function($id) {
+    AsiakasController::yksiAsiakas($id);
+});
+
 $routes->get('/', function() {
     KaljaaController::index();
 });
