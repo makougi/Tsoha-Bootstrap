@@ -1,5 +1,21 @@
 <?php
 
+$routes->post('/asiakas/:id/muokkaa', function($id) {
+    AsiakasController::muokkaa($id);
+});
+
+$routes->get('/asiakas/:id/muokkaa', function($id) {
+    AsiakasController::muokkaa($id);
+});
+
+$routes->post('/asiakas/:id/paivita', function($id) {
+    AsiakasController::paivita($id);
+});
+
+$routes->post('/asiakas/:id/poista', function($id) {
+    AsiakasController::poista($id);
+});
+
 $routes->post('/asiakas', function() {
     AsiakasController::tallenna();
 });

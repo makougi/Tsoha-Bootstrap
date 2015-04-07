@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if viesti %}
+<div class="alert alert-success">
+    {{viesti}}
+</div>
+{% endif %}
+
   <h1>Kaikki asiakkaat</h1>
 
   <table class="table table-striped table-bordered">

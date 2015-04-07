@@ -6,11 +6,22 @@ class Asiakas extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = array('validate_nimi', 'validate_puhelinnumero');
+    }
+
+    public function paivita() {
+        $query = DB::connection()->prepare('UPDATE Asiakkaat SET nimi = :nimi, puhelinnumero = :puhelinnumero WHERE tunnus = :tunnus');
+        $query->execute(array('tunnus'=>$this->tunnus,'nimi' => $this->nimi, 'puhelinnumero' => $this->puhelinnumero));
+    }
+
+    public function poista() {
+        $query = DB::connection()->prepare('DELETE FROM Asiakkaat WHERE tunnus = :tunnus');
+        $query->execute(array('tunnus'=>$this->tunnus));
     }
 
     public function tallenna() {
         $query = DB::connection()->prepare('INSERT INTO Asiakkaat (nimi,puhelinnumero) VALUES (:nimi,:puhelinnumero) RETURNING tunnus');
-        $query->execute(array('nimi'=>$this->nimi,'puhelinnumero'=>$this->puhelinnumero));
+        $query->execute(array('nimi' => $this->nimi, 'puhelinnumero' => $this->puhelinnumero));
         $row = $query->fetch();
         $this->tunnus = $row['tunnus'];
     }
@@ -46,4 +57,5 @@ class Asiakas extends BaseModel {
         }
         return $asiakkaat;
     }
+
 }

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Lisää asiakas</h1>
+<h1>Muokkaa asiakastietoja</h1>
 
 {% if errors %}
 <div class="alert alert-danger">
@@ -13,7 +13,7 @@
 </div>
 {% endif %}
 
-<form method="post" action="{{base_path}}/asiakas">
+<form method="post" action="{{base_path}}/asiakas/{{attributes.tunnus}}/paivita">
     <div class="form-group">
         <label>Nimi</label>
         <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
@@ -25,7 +25,16 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Lisää</button>
+        <button type="submit" class="btn btn-primary">Päivitä</button>
     </div>
 </form>
+
+<br>
+<br>
+<h4>Poista asiakkaan tili</h4>
+
+<form method="post" action="{{base_path}}/asiakas/{{attributes.tunnus}}/poista" style="display:inline-block;">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+
 {% endblock %}

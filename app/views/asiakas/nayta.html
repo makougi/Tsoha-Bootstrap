@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+{%import "macros/forms.html" as forms %}
 
+
+{% if viesti %}
 <div class="alert alert-success">
     {{viesti}}
 </div>
+{% endif %}
 
 <h1>Asiakas</h1>
+
+<p>
+    {{forms.muokkaa_button("#{base_path}/asiakas/#{asiakas.tunnus}/muokkaa")}}
+<!--    <a href="{{base_path}}/asiakas/{{asiakas.tunnus}}/muokkaa" class="btn btn-default">Muokkaa</a>-->
+    {{forms.poista_button("#{base_path}/asiakas/#{asiakas.tunnus}/poista")}}
+</p>
 
 <table class="table table-striped table-bordered">
     <thead>
