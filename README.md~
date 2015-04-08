@@ -12,8 +12,15 @@ Järjestelmän tavoitteena on pitää kirjaa asiakkaiden saldosta, järjestelmä
 sekä juomavaraston juomien saldosta. Lisäksi tarkoituksena on, että järjestelmässä ylläpidetään
 lokia, josta näkee kaikki tapahtumat.
 
-## Harjoitussivuja
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/hiekkalaatikko
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/login
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/game
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/game/1
+## Sivuja
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/kirjautuminen
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/asiakas
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/yllapitaja
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/asiakkaat
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/varasto
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/juoma
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/kirjanpito
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/loki
+
+

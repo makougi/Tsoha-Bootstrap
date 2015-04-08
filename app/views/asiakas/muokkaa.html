@@ -15,6 +15,16 @@
 
 <form method="post" action="{{base_path}}/asiakas/{{attributes.tunnus}}/paivita">
     <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" name="kayttajatunnus" class="form-control" value="{{attributes.kayttajatunnus}}">
+    </div>
+
+    <div class="form-group">
+        <label>Salasana</label>
+        <input type="password" name="salasana" class="form-control" value="{{attributes.salasana}}">
+    </div>
+
+    <div class="form-group">
         <label>Nimi</label>
         <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>

@@ -16,6 +16,17 @@ class BaseModel {
         }
     }
 
+    public function validate_kayttajatunnus() {
+        $errors = array();
+        if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
+            $errors[] = 'Käyttäjätunnus ei saa olla tyhjä';
+        }
+        if (strlen($this->kayttajatunnus) < 2) {
+            $errors[] = 'Käyttäjätunnuksen tulee olla vähintään kaksi merkkiä';
+        }
+        return $errors;
+    }
+
     public function validate_puhelinnumero() {
         $errors = array();
         if ($this->puhelinnumero == '' || $this->puhelinnumero == null) {

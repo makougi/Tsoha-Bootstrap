@@ -1,4 +1,20 @@
-        {% extends "base.html" %}
-        {% block content %}
-        <h1>Tervetuloa Kaljaa-tietokantaan</h1>
-        {% endblock %}
+{% extends "base.html" %}
+{% block content %}
+
+{% if viesti %}
+<div class="alert alert-success">
+    {{viesti}}
+</div>
+{% endif %}
+
+<h1>Tervetuloa Kaljaa-tietokantaan</h1>
+<br>
+{% if user_logged_in %}
+<a href="{{base_path}}/asiakas/{{user_logged_in.tunnus}}" class="btn btn-success">Omat tiedot</a>
+{% endif %}
+<a href="{{base_path}}/asiakas" class="btn btn-default">Kaikki asiakkaat</a>
+<a href="{{base_path}}/asiakas/uusi" class="btn btn-default">Uusi asiakas</a>
+
+<!--<a href="{{base_path}}/asiakas/{{asiakas.tunnus}}/muokkaa" class="btn btn-default">Muokkaa</a>-->
+
+{% endblock %}

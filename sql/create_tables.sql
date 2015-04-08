@@ -1,6 +1,13 @@
 
+-- CREATE TABLE Users(
+--   kayttajatunnus varchar(50) PRIMARY KEY,
+--   salasana varchar(50) NOT NULL
+-- );
+
 CREATE TABLE Asiakkaat(
   tunnus SERIAL PRIMARY KEY,
+  kayttajatunnus varchar(50) NOT NULL,
+  salasana varchar(50) NOT NULL,
   nimi varchar(50) NOT NULL,
   puhelinnumero varchar(20) NOT NULL
 );

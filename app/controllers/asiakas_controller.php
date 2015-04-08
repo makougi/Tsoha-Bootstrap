@@ -1,8 +1,24 @@
 <?php
 
-require 'app/models/asiakas.php';
-
 class AsiakasController extends BaseController {
+
+    public static function login() {
+        View::make('user/login.html');
+    }
+
+    public static function handle_login() {
+        $params = $_POST;
+
+        $user = Asiakas::authenticate($params['username'], $params['password']);
+
+        if (!$user) {
+            View::make('asiakas/login.html', array('error' => 'Väärä käyttäjätunnus tai salasana!', 'username' => $params['username']));
+        } else {
+            $_SESSION['user'] = $user->tunnus;
+
+            Redirect::to('/', array('viesti' => 'Tervetuloa takaisin, ' . $user->nimi . '!'));
+        }
+    }
 
     public static function muokkaa($id) {
         $asiakas = Asiakas::etsi($id);
@@ -14,12 +30,14 @@ class AsiakasController extends BaseController {
 
         $attributes = array(
             'tunnus' => $id,
+            'kayttajatunnus' => $params['kayttajatunnus'],
+            'salasana' => $params['salasana'],
             'nimi' => $params['nimi'],
             'puhelinnumero' => $params['puhelinnumero']
         );
         $asiakas = new Asiakas($attributes);
         $errors = $asiakas->errors();
-        
+
         if (count($errors) > 0) {
             View::make('asiakas/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
@@ -40,6 +58,8 @@ class AsiakasController extends BaseController {
         $params = $_POST;
 
         $attributes = array(
+            'kayttajatunnus' => $params['kayttajatunnus'],
+            'salasana' => $params['salasana'],
             'nimi' => $params['nimi'],
             'puhelinnumero' => $params['puhelinnumero']
         );
@@ -47,8 +67,13 @@ class AsiakasController extends BaseController {
         $errors = $asiakas->errors();
 
         if (count($errors) == 0) {
-            $asiakas->tallenna();
-            Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakas on lisätty tietokantaan!'));
+            if ($asiakas->KayttajatunnusOnVapaa()) {
+                $asiakas->tallenna();
+                Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakas on lisätty tietokantaan!'));
+            } else {
+                $errors[] = 'Käyttäjätunnus on jo käytössä toisella käyttäjällä!';
+                View::make('asiakas/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
+            }
         } else {
             View::make('asiakas/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
         }

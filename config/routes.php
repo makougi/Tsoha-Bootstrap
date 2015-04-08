@@ -1,5 +1,13 @@
 <?php
 
+$routes->get('/login',function(){
+    AsiakasController::login();
+});
+
+$routes->post('/login',function(){
+    AsiakasController::handle_login();
+});
+
 $routes->post('/asiakas/:id/muokkaa', function($id) {
     AsiakasController::muokkaa($id);
 });
@@ -16,7 +24,7 @@ $routes->post('/asiakas/:id/poista', function($id) {
     AsiakasController::poista($id);
 });
 
-$routes->post('/asiakas', function() {
+$routes->post('/asiakas/uusi', function() {
     AsiakasController::tallenna();
 });
 
