@@ -1,5 +1,9 @@
 <?php
 
+$routes->post('/logout',function(){
+    AsiakasController::logout();
+});
+
 $routes->get('/login',function(){
     AsiakasController::login();
 });
