@@ -1,5 +1,46 @@
 <?php
 
+$routes->post('/varasto/:id/muokkaa', function($id) {
+    JuomaController::muokkaa($id);
+});
+
+$routes->get('/varasto/:id/muokkaa', function($id) {
+    JuomaController::muokkaa($id);
+});
+
+$routes->post('/varasto/:id/paivita', function($id) {
+    JuomaController::paivita($id);
+});
+
+$routes->post('/varasto/:id/poista', function($id) {
+    JuomaController::poista($id);
+});
+
+$routes->post('/varasto/uusi', function() {
+    JuomaController::tallenna();
+});
+
+$routes->get('/varasto/uusi', function() {
+    JuomaController::uusi();
+});
+
+$routes->get('/varasto', function() {
+    JuomaController::index();
+});
+
+$routes->get('/varasto/:id', function($id) {
+    JuomaController::etsi($id);
+});
+
+
+
+
+
+
+
+
+
+
 $routes->post('/logout',function(){
     AsiakasController::logout();
 });

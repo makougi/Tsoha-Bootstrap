@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if viesti %}
+<div class="alert alert-success">
+    {{viesti}}
+</div>
+{% endif %}
+
+<h1>Varasto</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Juoma</th>
+            <th>Kpl</th>
+            <th>Hinta</th>
+            <th>Tilavuus</th>
+            <th>Alkoholiprosentti</th>
+            <th>Kuvaus</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for juoma in varasto %}
+        <tr>
+            
+            <td><a href="{{base_path}}/varasto/{{juoma.tunnus}}/muokkaa">{{juoma.juoma}}</a></td>
+            <td>{{juoma.kpl}}</td>
+            <td>{{juoma.hinta}}</td>
+            <td>{{juoma.tilavuus}}</td>
+            <td>{{juoma.alkoholiprosentti}}</td>
+            <td>{{juoma.kuvaus}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

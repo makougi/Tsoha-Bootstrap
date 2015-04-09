@@ -1,6 +1,7 @@
 <?php
 
 require 'app/models/asiakas.php';
+require 'app/models/juoma.php';
 
 class BaseController {
 

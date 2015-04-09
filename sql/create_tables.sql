@@ -12,22 +12,20 @@ CREATE TABLE Asiakkaat(
   puhelinnumero varchar(20) NOT NULL
 );
 
-CREATE TABLE Juomat(
-  juoma varchar(200) PRIMARY KEY,
-  alkoholiprosentti INTEGER,
+CREATE TABLE Varasto(
+  tunnus SERIAL PRIMARY KEY,
+  juoma varchar(200),
+  kpl varchar(10),
+  hinta varchar(10),
+  tilavuus varchar(10), 
+  alkoholiprosentti varchar(10),
   kuvaus varchar(200)
 );
 
-CREATE TABLE Varasto(
-  juoma varchar(200) PRIMARY KEY,
-  maara INTEGER,
-  hinta INTEGER
-);
 CREATE TABLE Kirjanpito(
   asiakastunnus SERIAL PRIMARY KEY,
-  nimi varchar(50) NOT NULL,
-  saldo INTEGER NOT NULL,
-  status INTEGER NOT NULL
+  saldo FLOAT NOT NULL,
+  status varchar(20) NOT NULL
 );
 CREATE TABLE Loki(
   tapahtuma varchar(20),

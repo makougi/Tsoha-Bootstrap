@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Lisää asiakas</h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/varasto/uusi">
+    <div class="form-group">
+        <label>Juoma</label>
+        <input type="text" name="juoma" class="form-control" value="{{attributes.juoma}}">
+    </div>
+
+    <div class="form-group">
+        <label>Kpl</label>
+        <input type="text" name="kpl" class="form-control" value="{{attributes.kpl}}">
+    </div>
+
+    <div class="form-group">
+        <label>Hinta</label>
+        <input type="text" name="hinta" class="form-control" value="{{attributes.hinta}}">
+    </div>
+
+    <div class="form-group">
+        <label>Tilavuus</label>
+        <input type="text" name="tilavuus" class="form-control" value="{{attributes.tilavuus}}">
+    </div>
+
+    <div class="form-group">
+        <label>Alkoholiprosentti</label>
+        <input type="text" name="alkoholiprosentti" class="form-control" value="{{attributes.alkoholiprosentti}}">
+    </div>
+    
+    <div class="form-group">
+        <label>Kuvaus</label>
+        <input type="text" name="kuvaus" class="form-control" value="{{attributes.kuvaus}}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% endblock %}

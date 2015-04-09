@@ -11,10 +11,15 @@
 <br>
 {% if user_logged_in %}
 <a href="{{base_path}}/asiakas/{{user_logged_in.tunnus}}" class="btn btn-success">Omat tiedot</a>
-{% endif %}
 <a href="{{base_path}}/asiakas" class="btn btn-default">Kaikki asiakkaat</a>
+{% endif %}
 <a href="{{base_path}}/asiakas/uusi" class="btn btn-default">Uusi asiakas</a>
-
+<br>
+<br>
+{% if user_logged_in %}
+<a href="{{base_path}}/varasto" class="btn btn-default">Varasto</a>
+<a href="{{base_path}}/varasto/uusi" class="btn btn-default">Uusi juoma</a>
+{% endif %}
 <!--<a href="{{base_path}}/asiakas/{{asiakas.tunnus}}/muokkaa" class="btn btn-default">Muokkaa</a>-->
 
 {% endblock %}
