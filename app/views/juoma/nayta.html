@@ -2,6 +2,8 @@
 {% block content %}
 {%import "macros/forms.html" as forms %}
 
+<a href="{{base_path}}/varasto">Varasto</a>
+<br>
 
 {% if viesti %}
 <div class="alert alert-success">
@@ -14,7 +16,6 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Tunnus</th>
             <th>Juoma</th>
             <th>Kpl</th>
             <th>Hinta</th>
@@ -26,7 +27,6 @@
 
     <tbody>
         <tr>
-            <td>{{juoma.tunnus}}</td>
             <td>{{juoma.juoma}}</td>
             <td>{{juoma.kpl}}</td>
             <td>{{juoma.hinta}}</td>

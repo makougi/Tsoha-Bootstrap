@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>Tunnus</th>
+            <th>Käyttäjätunnus</th>
             <th>Nimi</th>
             <th>Puhelinnumero</th>
         </tr>
@@ -22,6 +23,7 @@
         {% for asiakas in asiakkaat %}
         <tr>
             <td><a href="{{base_path}}/asiakas/{{asiakas.tunnus}}/muokkaa">{{asiakas.tunnus}}</a></td>
+            <td>{{asiakas.kayttajatunnus}}</td>
             <td>{{asiakas.nimi}}</td>
             <td>{{asiakas.puhelinnumero}}</td>
         </tr>

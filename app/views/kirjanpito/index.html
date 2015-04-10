@@ -22,7 +22,7 @@
         {% for asiakas in kirjanpito %}
         <tr>
             
-            <td><a href="{{base_path}}/kirjanpito/{{asiakas.tunnus}}/muokkaa">{{asiakas.tunnus}}</a></td>
+            <td><a href="{{base_path}}/kirjanpito/{{asiakas.tunnus}}">{{asiakas.tunnus}}</a></td>
             <td>{{asiakas.saldo}}</td>
             <td>{{asiakas.status}}</td>
         </tr>

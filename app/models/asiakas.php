@@ -13,7 +13,7 @@ class Asiakas extends BaseModel {
         $query = DB::connection()->prepare('SELECT * FROM Asiakkaat WHERE kayttajatunnus = :username');
         $query->execute(array('username' => $this->kayttajatunnus));
         $row = $query->fetch();
-        if ($row){
+        if ($row) {
             return false;
         }
         return true;
@@ -42,9 +42,9 @@ class Asiakas extends BaseModel {
         $query->execute(array('tunnus' => $this->tunnus, 'kayttajatunnus' => $this->kayttajatunnus, 'salasana' => $this->salasana, 'nimi' => $this->nimi, 'puhelinnumero' => $this->puhelinnumero));
     }
 
-    public function poista() {
-        $query = DB::connection()->prepare('DELETE FROM Asiakkaat WHERE tunnus = :tunnus');
-        $query->execute(array('tunnus' => $this->tunnus));
+    public function poista($id) {
+        $query = DB::connection()->prepare('DELETE FROM Asiakkaat WHERE tunnus = :id');
+        $query->execute(array('id' => $this->tunnus));
     }
 
     public function tallenna() {

@@ -1,9 +1,3 @@
-
--- CREATE TABLE Users(
---   kayttajatunnus varchar(50) PRIMARY KEY,
---   salasana varchar(50) NOT NULL
--- );
-
 CREATE TABLE Asiakkaat(
   tunnus SERIAL PRIMARY KEY,
   kayttajatunnus varchar(50) NOT NULL,
@@ -17,7 +11,7 @@ CREATE TABLE Varasto(
   juoma varchar(200) NOT NULL,
   kpl INTEGER,
   hinta FLOAT,
-  tilavuus FLOAT, 
+  tilavuus varchar(20), 
   alkoholiprosentti varchar(3),
   kuvaus varchar(200)
 );

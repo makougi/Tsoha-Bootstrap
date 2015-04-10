@@ -17,13 +17,13 @@ class KirjanpitoController extends BaseController {
         Kirjanpito::suurenna_saldoa($id, $summa);
     }
 
-    public function muokkaa($id) {
+    public static function muokkaa($id) {
         self::check_logged_in();
         $kirjanpito = Kirjanpito::etsi($id);
         View::make('kirjanpito/muokkaa.html', array('attributes' => $kirjanpito));
     }
 
-    public function paivita($id) {
+    public static function paivita($id) {
         self::check_logged_in();
         $params = $_POST;
 
@@ -44,46 +44,33 @@ class KirjanpitoController extends BaseController {
         }
     }
 
-    public function poista($id) {
+    public static function poista($id) {
         self::check_logged_in();
         $kirjanpito = new Kirjanpito(array('tunnus' => $id));
         $kirjanpito->poista();
-        Redirect::to('/kirjanpito', array('viesti' => 'Asiakkaan kirjanpitotiedot poistettu onnistuneesti!'
-        ));
+//        Redirect::to('/kirjanpito', array('viesti' => 'Asiakkaan kirjanpitotiedot poistettu onnistuneesti!'
+//        ));
     }
 
-    public function tallenna() {
-        self::check_logged_in();
-        $params = $_POST;
-
+    public static function tallenna($tunnus) {
         $attributes = array(
-            'saldo' => $params['saldo'],
-            'status' => $params['status']
+            'tunnus' => $tunnus,
+            'saldo' => 0,
+            'status' => 'ok'
         );
-        $kirjanpito = new Kirjanpito($attributes);
-        $errors = $kirjanpito->errors();
-
-        if (count($errors) == 0) {
-            if ($kirjanpito->samaaAsiakastaEiKirjanpidossa()) {
-                $kirjanpito->tallenna();
-                Redirect::to('/kirjanpito/' . $kirjanpito->tunnus, array('viesti' => 'Asiakas lisätty kirjanpitoon onnistuneesti!'));
-            } else {
-                $errors[] = 'Sama asiakas on jo kirjanpidossa!';
-                View::make('kirjanpito/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
-            }
-        } else {
-            View::make('kirjanpito/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
-        }
+        $asiakas = new Kirjanpito($attributes);
+        $asiakas->tallenna();
     }
 
-    public function uusi() {
+    public static function uusi() {
         View::make('kirjanpito/uusi.html');
     }
 
     public static function etsi($id) {
         self::check_logged_in();
         $kirjanpito = Kirjanpito::etsi($id);
-        View::make('kirjanpito/nayta.html', array('kirjanpito' => $kirjanpito));
+        $asiakas = Asiakas::etsi($id);
+        View::make('kirjanpito/nayta.html', array('kirjanpito' => $kirjanpito, 'asiakas' => $asiakas));
     }
 
     public static function index() {

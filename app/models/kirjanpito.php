@@ -6,7 +6,7 @@ class Kirjanpito extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-//        $this->validators = array('validate_saldo');
+        $this->validators = array('validate_saldo');
     }
 
     public static function pienennaSaldoa($tunnus, $summa) {
@@ -42,8 +42,6 @@ class Kirjanpito extends BaseModel {
     public function tallenna() {
         $query = DB::connection()->prepare('INSERT INTO Kirjanpito (tunnus,saldo,status) VALUES (:tunnus, :saldo, :status)');
         $query->execute(array('tunnus' => $this->tunnus, 'saldo' => $this->saldo, 'status' => $this->status));
-        $row = $query->fetch();
-        $this->tunnus = $row['tunnus'];
     }
 
     public static function etsi($id) {

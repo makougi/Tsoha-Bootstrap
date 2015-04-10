@@ -24,13 +24,29 @@ class JuomaController extends BaseController {
         $juoma = new Juoma($attributes);
         $errors = $juoma->errors();
 
-        if (count($errors) > 0) {
-            View::make('juoma/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
+        if (count($errors) == 0) {
+            if ($juoma->SamaaJuomaaEiTietokannassa()) {
+                $juoma->paivita();
+                Redirect::to('/varasto/' . $juoma->tunnus, array('viesti' => 'Juoma on lisätty tietokantaan!'));
+            } else {
+                $errors[] = 'Sama juoma on jo tietokannassa!';
+                View::make('juoma/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
+            }
         } else {
-            $juoma->paivita();
-            Redirect::to('/varasto/' . $juoma->tunnus, array('viesti' => 'Juoman tiedot päivitetty onnistuneesti!'
-            ));
+            View::make('juoma/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
         }
+//        
+//        
+//        
+//        
+//        
+//        if (count($errors) > 0) {
+//            View::make('juoma/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
+//        } else {
+//            $juoma->paivita();
+//            Redirect::to('/varasto/' . $juoma->tunnus, array('viesti' => 'Juoman tiedot päivitetty onnistuneesti!'
+//            ));
+//        }
     }
 
     public static function poista($id) {

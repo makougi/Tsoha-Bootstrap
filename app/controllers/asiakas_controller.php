@@ -42,28 +42,49 @@ class AsiakasController extends BaseController {
             'nimi' => $params['nimi'],
             'puhelinnumero' => $params['puhelinnumero']
         );
+        $vanhaKayttajatunnus = Asiakas::etsi($id)->kayttajatunnus;
         $asiakas = new Asiakas($attributes);
         $errors = $asiakas->errors();
+
+        if ($vanhaKayttajatunnus != $asiakas->kayttajatunnus && $asiakas->KayttajatunnusOnVapaa($asiakas->kayttajatunnus) == false) {
+            $errors[] = 'Käyttäjätunnus on jo käytössä toisella käyttäjällä :(';
+        }
+
+        if (count($errors) == 0) {
+            $asiakas->paivita();
+            Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakastiedot päivitetty onnistuneesti!'));
+        } else {
+            View::make('asiakas/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
+        }
+
 
         if (count($errors) > 0) {
             View::make('asiakas/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
-            $asiakas->paivita();
-            Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakastiedot päivitetty onnistuneesti!'
-            ));
+            if ($vanhaKayttajatunnus == $asiakas->kayttajatunnus || $asiakas->KayttajatunnusOnVapaa($asiakas->kayttajatunnus)) {
+                $asiakas->paivita();
+                Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakastiedot päivitetty onnistuneesti!'));
+            } else {
+                
+            }
         }
     }
 
     public static function poista($id) {
         self::check_logged_in();
+        if (BaseController::get_user_logged_in()->tunnus == $id) {
+            $asiakas = new Asiakas(array('tunnus' => $id));
+            KirjanpitoController::poista($id);
+            $asiakas->poista($id);
+            self::logout();
+        }
         $asiakas = new Asiakas(array('tunnus' => $id));
-        $asiakas->poista();
-        Redirect::to('/asiakas', array('viesti' => 'Asiakastili poistettu onnistuneesti!'
-        ));
+        KirjanpitoController::poista($id);
+        $asiakas->poista($id);
+        Redirect::to('/asiakas', array('viesti' => 'Asiakastili poistettu onnistuneesti!'));
     }
 
     public static function tallenna() {
-        self::check_logged_in();
         $params = $_POST;
 
         $attributes = array(
@@ -78,9 +99,11 @@ class AsiakasController extends BaseController {
         if (count($errors) == 0) {
             if ($asiakas->KayttajatunnusOnVapaa()) {
                 $asiakas->tallenna();
-                Redirect::to('/asiakas/' . $asiakas->tunnus, array('viesti' => 'Asiakas on lisätty tietokantaan!'));
+                KirjanpitoController::tallenna($asiakas->tunnus);
+                $_SESSION['user'] = $asiakas->tunnus;
+                Redirect::to('/', array('viesti' => "Tervetuloa $asiakas->nimi!"));
             } else {
-                $errors[] = 'Käyttäjätunnus on jo käytössä toisella käyttäjällä!';
+                $errors[] = 'Käyttäjätunnus on jo käytössä toisella käyttäjällä :(';
                 View::make('asiakas/uusi.html', array('errors' => $errors, 'attributes' => $attributes));
             }
         } else {

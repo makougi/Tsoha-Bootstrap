@@ -16,6 +16,30 @@ class BaseModel {
         }
     }
 
+    public function validate_saldo() {
+        $errors = array();
+        if (!is_numeric($this->saldo)) {
+            $errors[] = 'Saldon pitää olla luku';
+        }
+        return $errors;
+    }
+
+    public function validate_hinta() {
+        $errors = array();
+        if (!is_numeric($this->hinta)) {
+            $errors[] = 'Hinnan pitää olla luku';
+        }
+        return $errors;
+    }
+
+    public function validate_kpl() {
+        $errors = array();
+        if (!ctype_digit($this->kpl)) {
+            $errors[] = 'Kpl:n pitää olla kokonaisluku';
+        }
+        return $errors;
+    }
+
     public function validate_juoma() {
         $errors = array();
         if ($this->juoma == '' || $this->juoma == null) {

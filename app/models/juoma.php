@@ -6,7 +6,7 @@ class Juoma extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_juoma');
+        $this->validators = array('validate_juoma','validate_kpl','validate_hinta');
     }
 
     public function SamaaJuomaaEiTietokannassa() {
@@ -31,7 +31,7 @@ class Juoma extends BaseModel {
 
     public function tallenna() {
         $query = DB::connection()->prepare('INSERT INTO Varasto (juoma,kpl,hinta,tilavuus,alkoholiprosentti,kuvaus) VALUES (:juoma,:kpl,:hinta,:tilavuus,:alkoholiprosentti,:kuvaus) RETURNING tunnus');
-        $query->execute(array('tunnus' => $this->tunnus, 'juoma' => $this->juoma, 'kpl' => $this->kpl, 'hinta' => $this->hinta, 'tilavuus' => $this->tilavuus, 'alkoholiprosentti' => $this->alkoholiprosentti, 'kuvaus' => $this->kuvaus));
+        $query->execute(array('juoma' => $this->juoma, 'kpl' => $this->kpl, 'hinta' => $this->hinta, 'tilavuus' => $this->tilavuus, 'alkoholiprosentti' => $this->alkoholiprosentti, 'kuvaus' => $this->kuvaus));
         $row = $query->fetch();
         $this->tunnus = $row['tunnus'];
     }
