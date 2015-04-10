@@ -1,5 +1,69 @@
 <?php
 
+$routes->post('/pankki/talleta',function(){
+    PankkiController::talleta();
+});
+$routes->get('/pankki',function(){
+    PankkiController::index();
+});
+
+
+
+
+$routes->post('/kauppa/:id/osta',function($id){
+    KauppaController::osta($id);
+});
+
+$routes->get('/kauppa', function() {
+    KauppaController::index();
+});
+
+
+
+
+
+$routes->post('/kirjanpito/:id/muokkaa', function($id) {
+    KirjanpitoController::muokkaa($id);
+});
+
+$routes->get('/kirjanpito/:id/muokkaa', function($id) {
+    KirjanpitoController::muokkaa($id);
+});
+
+$routes->post('/kirjanpito/:id/paivita', function($id) {
+    KirjanpitoController::paivita($id);
+});
+
+$routes->post('/kirjanpito/:id/poista', function($id) {
+    KirjanpitoController::poista($id);
+});
+
+$routes->post('/kirjanpito/uusi', function() {
+    KirjanpitoController::tallenna();
+});
+
+$routes->get('/kirjanpito/uusi', function() {
+    KirjanpitoController::uusi();
+});
+
+$routes->get('/kirjanpito', function() {
+    KirjanpitoController::index();
+});
+
+$routes->get('/kirjanpito/:id', function($id) {
+    KirjanpitoController::etsi($id);
+});
+
+
+
+
+
+
+
+
+
+
+
 $routes->post('/varasto/:id/muokkaa', function($id) {
     JuomaController::muokkaa($id);
 });

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if ostettu_juoma %}
+
+
+<div class="alert alert-success">
+    {{ostettu_juoma}} ostettu!
+</div>
+{% endif %}
+
+<h1>Juomat</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Juoma</th>
+            <th>Hinta</th>
+            <th>Kuvaus</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for juoma in kauppa %}
+        <tr>
+            <td>
+                {% if user_logged_in %}
+                <form method="post" action="{{base_path}}/kauppa/{{juoma.tunnus}}/osta">
+                    <button type="submit" name="asiakastunnus" value="{{user_logged_in_tunnus}}" class="btn btn-success">Osta</button>
+                </form>
+                {% endif %}
+            </td>
+            <td>{{juoma.juoma}} {{juoma.alkoholiprosentti}}% {{juoma.tilavuus}}L</td>
+            <td>{{juoma.hinta}}</td>
+            <td>{{juoma.kuvaus}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

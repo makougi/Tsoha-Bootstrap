@@ -28,7 +28,7 @@ class JuomaController extends BaseController {
             View::make('juoma/muokkaa.html', array('errors' => $errors, 'attributes' => $attributes));
         } else {
             $juoma->paivita();
-            Redirect::to('/juoma/' . $juoma->tunnus, array('viesti' => 'Juoman tiedot päivitetty onnistuneesti!'
+            Redirect::to('/varasto/' . $juoma->tunnus, array('viesti' => 'Juoman tiedot päivitetty onnistuneesti!'
             ));
         }
     }
@@ -37,7 +37,7 @@ class JuomaController extends BaseController {
         self::check_logged_in();
         $juoma = new Juoma(array('tunnus' => $id));
         $juoma->poista();
-        Redirect::to('/juoma', array('viesti' => 'Juoman tiedot poistettu onnistuneesti!'
+        Redirect::to('/varasto', array('viesti' => 'Juoman tiedot poistettu onnistuneesti!'
         ));
     }
 
@@ -59,7 +59,7 @@ class JuomaController extends BaseController {
         if (count($errors) == 0) {
             if ($juoma->SamaaJuomaaEiTietokannassa()) {
                 $juoma->tallenna();
-                Redirect::to('/juoma/' . $juoma->tunnus, array('viesti' => 'Juoma on lisätty tietokantaan!'));
+                Redirect::to('/varasto/' . $juoma->tunnus, array('viesti' => 'Juoma on lisätty tietokantaan!'));
             } else {
                 $errors[] = 'Sama juoma on jo tietokannassa!';
                 View::make('juoma/uusi.html', array('errors' => $errors, 'attributes' => $attributes));

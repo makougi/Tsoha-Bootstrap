@@ -6,12 +6,12 @@ class Juoma extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_juoma', 'validate_tilavuus', 'validate_alkoholiprosentti');
+        $this->validators = array('validate_juoma');
     }
 
     public function SamaaJuomaaEiTietokannassa() {
-        $query = DB::connection()->prepare('SELECT * FROM Varasto WHERE juoma = :juoma AND tilavuus = :tilavuus');
-        $query->execute(array('juoma' => $this->juoma, 'tilavuus' => $this->tilavuus));
+        $query = DB::connection()->prepare('SELECT * FROM Varasto WHERE juoma = :juoma AND tilavuus = :tilavuus AND alkoholiprosentti = :alkoholiprosentti');
+        $query->execute(array('juoma' => $this->juoma, 'tilavuus' => $this->tilavuus, 'alkoholiprosentti' => $this->alkoholiprosentti));
         $row = $query->fetch();
         if ($row) {
             return false;

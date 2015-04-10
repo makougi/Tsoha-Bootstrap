@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{%import "macros/forms.html" as forms %}
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<br><h2>Asiakastunnus: {{attributes.tunnus}} </h2><br>
+
+<form method="post" action="{{base_path}}/kirjanpito/{{attributes.tunnus}}/paivita">
+    <div class="form-group">
+        <label>Saldo</label>
+        <input type="text" name="saldo" class="form-control" value="{{attributes.saldo}}">
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <input type="text" name="status" class="form-control" value="{{attributes.status}}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Päivitä</button>
+    </div>
+</form>
+<!--<br>
+<br>
+<h4>Poista asiakkaan tiedot</h4>
+{{forms.poista_button("#{base_path}/kirjanpito/#{kirjanpito.tunnus}/poista")}}-->
+{% endblock %}

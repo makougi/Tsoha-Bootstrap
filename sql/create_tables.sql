@@ -14,19 +14,20 @@ CREATE TABLE Asiakkaat(
 
 CREATE TABLE Varasto(
   tunnus SERIAL PRIMARY KEY,
-  juoma varchar(200),
-  kpl varchar(10),
-  hinta varchar(10),
-  tilavuus varchar(10), 
-  alkoholiprosentti varchar(10),
+  juoma varchar(200) NOT NULL,
+  kpl INTEGER,
+  hinta FLOAT,
+  tilavuus FLOAT, 
+  alkoholiprosentti varchar(3),
   kuvaus varchar(200)
 );
 
 CREATE TABLE Kirjanpito(
-  asiakastunnus SERIAL PRIMARY KEY,
-  saldo FLOAT NOT NULL,
-  status varchar(20) NOT NULL
+  tunnus INTEGER REFERENCES Asiakkaat(tunnus),
+  saldo FLOAT,
+  status varchar(20)
 );
+
 CREATE TABLE Loki(
   tapahtuma varchar(20),
   aika DATE,

@@ -10,15 +10,26 @@
 <h1>Tervetuloa Kaljaa-tietokantaan</h1>
 <br>
 {% if user_logged_in %}
+<a href="{{base_path}}/kauppa" class="btn btn-success">Osta</a>
+<a href="{{base_path}}/pankki" class="btn btn-success">Talleta rahaa</a>
 <a href="{{base_path}}/asiakas/{{user_logged_in.tunnus}}" class="btn btn-success">Omat tiedot</a>
+<br>
+{% endif %}
+
+
+
+{% if user_logged_in %}
+<h3>Ylläpito</h3>
+
 <a href="{{base_path}}/asiakas" class="btn btn-default">Kaikki asiakkaat</a>
 {% endif %}
 <a href="{{base_path}}/asiakas/uusi" class="btn btn-default">Uusi asiakas</a>
 <br>
-<br>
 {% if user_logged_in %}
 <a href="{{base_path}}/varasto" class="btn btn-default">Varasto</a>
 <a href="{{base_path}}/varasto/uusi" class="btn btn-default">Uusi juoma</a>
+<br>
+<a href="{{base_path}}/kirjanpito" class="btn btn-default">Kirjanpito</a>
 {% endif %}
 <!--<a href="{{base_path}}/asiakas/{{asiakas.tunnus}}/muokkaa" class="btn btn-default">Muokkaa</a>-->
 

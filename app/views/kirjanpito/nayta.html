@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{%import "macros/forms.html" as forms %}
+
+
+{% if viesti %}
+<div class="alert alert-success">
+    {{viesti}}
+</div>
+{% endif %}
+
+<h1>Asiakkaan kirjanpitotiedot</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Tunnus</th>
+            <th>Saldo</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{kirjanpito.tunnus}}</td>
+            <td>{{kirjanpito.saldo}}</td>
+            <td>{{kirjanpito.status}}</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    {{forms.muokkaa_button("#{base_path}/kirjanpito/#{kirjanpito.tunnus}/muokkaa")}}
+</p>
+<!--<br>
+<br>
+<h4>Poista asiakkaan tiedot</h4>
+{{forms.poista_button("#{base_path}/kirjanpito/#{kirjanpito.tunnus}/poista")}}-->
+{% endblock %}

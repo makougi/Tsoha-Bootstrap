@@ -16,6 +16,14 @@ class BaseModel {
         }
     }
 
+    public function validate_juoma() {
+        $errors = array();
+        if ($this->juoma == '' || $this->juoma == null) {
+            $errors[] = 'Juoman nimi ei saa olla tyhjä';
+        }
+        return $errors;
+    }
+
     public function validate_kayttajatunnus() {
         $errors = array();
         if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {

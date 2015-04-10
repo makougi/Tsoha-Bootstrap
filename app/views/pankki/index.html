@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+{%import "macros/forms.html" as forms %}
+
+
+{% if summa %}
+<div class="alert alert-success">
+    Tilille talletettu {{summa}} euroa!
+</div>
+{% endif %}
+
+<h1>Talleta rahaa</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Saldo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{asiakas.saldo}}</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+
+<form method="post" action="{{base_path}}/pankki/talleta">
+    <div class="form-group">
+        <label>Talletettava summa</label>
+        <input type="text" name="summa" class="form-control">
+        <input type="hidden" name="tunnus" value="{{asiakas.tunnus}}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Talleta</button>
+    </div>
+</form>
+{% endblock %}

@@ -2,6 +2,8 @@
 
 require 'app/models/asiakas.php';
 require 'app/models/juoma.php';
+require 'app/models/kirjanpito.php';
+require 'app/models/kauppa.php';
 
 class BaseController {
 
