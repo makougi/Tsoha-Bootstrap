@@ -2,6 +2,11 @@
 
 class KirjanpitoController extends BaseController {
 
+    public static function getStatus($id){
+        $status = Kirjanpito::getStatus($id);
+        return $status;
+    }
+    
     public static function getAsiakas($id) {
         $asiakas = Kirjanpito::etsi($id);
         return $asiakas;

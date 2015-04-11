@@ -6,8 +6,17 @@ class KauppaController extends BaseController {
         self::check_logged_in();
         $kauppa = Juoma::kaikki();
         $juoma = Juoma::etsi($id);
-        Kirjanpito::pienennaSaldoa($_POST['asiakastunnus'], $juoma->hinta);
-        View::make('kauppa/index.html', array('ostettu_juoma' => $juoma->juoma, 'kauppa' => $kauppa));
+        if (Kirjanpito::getStatus($_POST['asiakastunnus']) == "esto") {
+            View::make('kauppa/index.html', array('punainenviesti' => "Olet juonut liikaa :(", 'kauppa' => $kauppa));
+        } else {
+            if ($juoma->kpl > 0) {
+                $juoma->vahennaMaaraa();
+                Kirjanpito::pienennaSaldoa($_POST['asiakastunnus'], $juoma->hinta);
+                View::make('kauppa/index.html', array('viesti' => "$juoma->juoma ostettu!", 'kauppa' => $kauppa));
+            } else {
+                View::make('kauppa/index.html', array('punainenviesti' => "$juoma->juoma on loppu :(", 'kauppa' => $kauppa));
+            }
+        }
     }
 
     public static function index() {

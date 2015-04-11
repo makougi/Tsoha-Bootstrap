@@ -9,6 +9,17 @@ class Kirjanpito extends BaseModel {
         $this->validators = array('validate_saldo');
     }
 
+    public static function getStatus($id) {
+        $query = DB::connection()->prepare('SELECT * FROM Kirjanpito WHERE tunnus = :id');
+        $query->execute(array('id' => $id));
+        $row = $query->fetch();
+
+        if ($row) {
+            return $row['status'];
+        }
+        return null;
+    }
+
     public static function pienennaSaldoa($tunnus, $summa) {
         $query = DB::connection()->prepare('UPDATE Kirjanpito SET saldo = saldo-:summa WHERE tunnus = :tunnus');
         $query->execute(array('tunnus' => $tunnus, 'summa' => $summa));

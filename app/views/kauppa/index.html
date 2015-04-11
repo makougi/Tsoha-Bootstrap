@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if ostettu_juoma %}
-
-
+{% if viesti %}
 <div class="alert alert-success">
-    {{ostettu_juoma}} ostettu!
+    {{viesti}}
+</div>
+{% endif %}
+
+{% if punainenviesti %}
+<div class="alert alert-warning">
+    {{punainenviesti}}
 </div>
 {% endif %}
 

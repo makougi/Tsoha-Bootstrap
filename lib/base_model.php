@@ -19,7 +19,7 @@ class BaseModel {
     public function validate_saldo() {
         $errors = array();
         if (!is_numeric($this->saldo)) {
-            $errors[] = 'Saldon pitää olla luku';
+            $errors[] = 'Saldon pitää olla luku. (Jos käytit pilkkua, käytä pistettä)';
         }
         return $errors;
     }
@@ -27,7 +27,7 @@ class BaseModel {
     public function validate_hinta() {
         $errors = array();
         if (!is_numeric($this->hinta)) {
-            $errors[] = 'Hinnan pitää olla luku';
+            $errors[] = 'Hinnan pitää olla luku. (Jos käytit pilkkua, käytä pistettä)';
         }
         return $errors;
     }

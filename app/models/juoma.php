@@ -6,7 +6,12 @@ class Juoma extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_juoma','validate_kpl','validate_hinta');
+        $this->validators = array('validate_juoma', 'validate_kpl', 'validate_hinta');
+    }
+
+    public function vahennaMaaraa() {
+        $query = DB::connection()->prepare('UPDATE Varasto SET kpl = kpl-1 WHERE tunnus = :tunnus');
+        $query->execute(array('tunnus' => $this->tunnus));
     }
 
     public function SamaaJuomaaEiTietokannassa() {
