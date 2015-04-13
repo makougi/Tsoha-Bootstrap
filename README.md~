@@ -1,5 +1,9 @@
 ﻿# Tietokantasovelluksen esittelysivu
 
+##Ohjaajan tunnukset:
+käyttäjätunnus: ohjaaja
+salasana: salaohjaaja
+
 ##Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/)
@@ -14,13 +18,10 @@ lokia, josta näkee kaikki tapahtumat.
 
 ## Sivuja
 http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/kirjautuminen
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/login
 http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/asiakas
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/yllapitaja
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/asiakkaat
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/varasto
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/juoma
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/kirjanpito
-http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/loki
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/uusi
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/1
+http://kjlepola.users.cs.helsinki.fi/tietokantaharjoitus/1/muokkaa
 
 

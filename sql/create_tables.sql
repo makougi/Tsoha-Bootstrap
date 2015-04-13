@@ -21,13 +21,3 @@ CREATE TABLE Kirjanpito(
   saldo FLOAT,
   status varchar(20)
 );
-
-CREATE TABLE Loki(
-  tapahtuma varchar(20),
-  aika DATE,
-  ID INTEGER,
-  saldo INTEGER,
-  juoma varchar(200),
-  maara INTEGER,
-  muut varchar(20)
-);
