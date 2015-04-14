@@ -13,5 +13,5 @@ INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('1','300.00','ok');
 INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('2','50.00','ok');
 INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('3','50.00','ok');
 INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('4','80.00','ok');
-INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('4','-99999970','ok');
+INSERT INTO Kirjanpito (tunnus, saldo,status) VALUES ('5','-99999970','ok');
 
